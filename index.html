@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Life Organizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>StudySpace</h2>
+
+           
+<nav>
+    <a href="#" class="active" data-page="dashboard">
+        <span>🏠</span> Dashboard
+    </a>
+
+    <a href="#" data-page="timetable">
+        <span>📅</span> Timetable
+    </a>
+
+    <a href="#" data-page="assignments">
+        <span>📝</span> Assignments
+    </a>
+
+    <a href="#" data-page="notes">
+        <span>📚</span> Notes
+    </a>
+
+    <a href="#" data-page="exams">
+        <span>🎓</span> Exams
+    </a>
+</nav>
+
+        </aside>
+
+        <!-- Main Content -->
+        
+<main class="main-content">
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page active">
+        <div class="welcome-header">
+    <div>
+        <h1>Welcome back!</h1>
+        <p>Let's make today productive.</p>
+    </div>
+
+    <div class="today-date" id="todayDate"></div>
+</div>
+        <div class="cards">
+
+        <div class="card">
+    <h3>Assignments</h3>
+    <p id="pendingCount">0 Pending</p>
+</div>
+
+            <div class="card">
+                <h3>Upcoming Exams</h3>
+                <p id="examCount">0 Upcoming</p>
+            </div>
+
+            <div class="card">
+    <h3>Completed Assignments</h3>
+    <p id="completedCount">0 Completed</p>
+</div>
+        </div>
+    </section>
+
+    <!-- Timetable -->
+    
+<section id="timetable" class="page">
+    <h1>My Timetable</h1>
+    <p>Organize your weekly classes.</p>
+
+    <div class="timetable-form">
+        <h3>Add a New Class</h3>
+
+        <form id="classForm">
+            <input type="text" id="subject"
+                placeholder="Subject name" required>
+
+            <select id="day" required>
+                <option value="">Select Day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+            </select>
+
+            <label>Start Time</label>
+            <input type="time" id="startTime" required>
+
+            <label>End Time</label>
+            <input type="time" id="endTime" required>
+
+            <button type="submit">Add Class</button>
+        </form>
+    </div>
+
+    <div class="schedule">
+        <h3>Your Classes</h3>
+        <div id="classList">
+            <p>No classes added yet.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Assignments -->
+    <section id="assignments" class="page">
+        <h1>My Assignments</h1>
+        <p>Keep track of your academic tasks.</p>
+        <div class="timetable-form">
+            <h3>
+                Add New Assignment
+            </h3>
+            <form id="assignmentForm">
+                <input type="text" id="assignmentName" placeholder="Assignment Name" 
+                required>
+                <input type="text" id="assignmentSubject" placeholder="Subject Name"
+                required>
+
+                <label>Submission Deadline</label>
+                <input type="date" id="assignmentDate"
+                required>
+                <button type="submit">Add Assignment</button>
+            </form>
+        </div>
+        <div class="schedule">
+            <h3>Your Assignments</h3>
+            <div id="assignmentList">
+                <p>No assignments added yet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes -->
+    
+<section id="notes" class="page">
+    <h1>My Notes</h1>
+    <p>Organize your study notes here.</p>
+
+    <div class="timetable-form">
+        <h3>Create a New Note</h3>
+
+        <form id="noteForm">
+
+            <input
+                type="text"
+                id="noteTitle"
+                placeholder="Note Title"
+                required
+            >
+
+            <input
+                type="text"
+                id="noteSubject"
+                placeholder="Subject Name"
+                required
+            >
+
+<div class="editor-toolbar">
+
+    <button type="button" data-command="bold"><b>B</b></button>
+    <button type="button" data-command="italic"><i>I</i></button>
+    <button type="button" data-command="underline"><u>U</u></button>
+    <button type="button" data-command="strikeThrough"><s>S</s></button>
+
+    <select id="fontFamily">
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Courier New">Courier New</option>
+    </select>
+
+    <select id="fontSize">
+        <option value="3">Normal</option>
+        <option value="1">Small</option>
+        <option value="2">Medium</option>
+        <option value="4">Large</option>
+        <option value="5">Extra Large</option>
+        <option value="6">Huge</option>
+    </select>
+
+    <label>Font color
+        <input type="color" id="fontColor" value="#29243b">
+    </label>
+
+    <label>Highlight
+        <input type="color" id="highlightColor" value="#fff1a8">
+    </label>
+
+    <label>Background
+        <input type="color" id="backgroundColor" value="#ffffff">
+    </label>
+
+    <button type="button" data-command="insertUnorderedList">• List</button>
+    <button type="button" data-command="insertOrderedList">1. List</button>
+
+    
+<!-- Align Left -->
+<button type="button" data-command="justifyLeft" title="Align Left">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="white" stroke-width="2"
+         stroke-linecap="round">
+        <path d="M4 6h16 M4 10h11 M4 14h16 M4 18h11"/>
+    </svg>
+</button>
+
+<!-- Align Center -->
+<button type="button" data-command="justifyCenter" title="Align Center">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="white" stroke-width="2"
+         stroke-linecap="round">
+        <path d="M4 6h16 M7 10h10 M4 14h16 M7 18h10"/>
+    </svg>
+</button>
+
+<!-- Align Right -->
+<button type="button" data-command="justifyRight" title="Align Right">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="white" stroke-width="2"
+         stroke-linecap="round">
+        <path d="M4 6h16 M9 10h11 M4 14h16 M9 18h11"/>
+    </svg>
+</button>
+
+<!-- Justify -->
+<button type="button" data-command="justifyFull" title="Justify">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="white" stroke-width="2"
+         stroke-linecap="round">
+        <path d="M4 6h16 M4 10h16 M4 14h16 M4 18h16"/>
+    </svg>
+</button>
+
+    <select id="headingFormat">
+        <option value="p">Normal text</option>
+        <option value="h1">Heading 1</option>
+        <option value="h2">Heading 2</option>
+        <option value="h3">Heading 3</option>
+    </select>
+
+</div>
+
+
+            <div
+    id="noteContent"
+    class="rich-editor"
+    contenteditable="true"
+    data-placeholder="Write your notes here..."
+></div>
+
+            <button type="submit">Save Note</button>
+
+        </form>
+    </div>
+
+    <div class="schedule">
+        <h3>Your Saved Notes</h3>
+
+        <div id="noteList">
+            <p>No notes saved yet.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Exams -->
+    <section id="exams" class="page">
+    <h1>My Exams</h1>
+    <p>Keep track of your upcoming examinations.</p>
+
+    <div class="timetable-form">
+        <h3>Add New Exam</h3>
+
+        <form id="examForm">
+            <input
+                type="text"
+                id="examSubject"
+                placeholder="Subject Name"
+                required
+            >
+
+            <label>Exam Date</label>
+            <input
+                type="date"
+                id="examDate"
+                required
+            >
+
+            <button type="submit">Add Exam</button>
+        </form>
+    </div>
+
+    <div class="schedule">
+        <h3>Your Upcoming Exams</h3>
+        <div id="examList">
+            <p>No exams added yet.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+   
